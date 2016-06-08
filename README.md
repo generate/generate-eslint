@@ -1,6 +1,6 @@
 # generate-eslint [![NPM version](https://img.shields.io/npm/v/generate-eslint.svg?style=flat)](https://www.npmjs.com/package/generate-eslint) [![NPM downloads](https://img.shields.io/npm/dm/generate-eslint.svg?style=flat)](https://npmjs.org/package/generate-eslint) [![Build Status](https://img.shields.io/travis/generate/generate-eslint.svg?style=flat)](https://travis-ci.org/generate/generate-eslint)
 
-Generate an eslint config file. Can be used as a sub-generator or plugin with other generators.
+Generate a `.eslintrc.json` or `.eslintignore` file as part of a larger build workflow. This generator can be used as a sub-generator or plugin inside other generators.
 
 ## What is generate?
 
@@ -10,12 +10,24 @@ Visit the [getting started guide](https://github.com/generate/getting-started-gu
 
 ## Quickstart
 
-generate-eslint is a [node.js](https://nodejs.org/en/) application that is installed using [npm](https://www.npmjs.com/). If you're unfamiliar with generate, it might help to visit the [generate](https://github.com/generate/generate) readme, or visit the [getting started guide](https://github.com/generate/getting-started-guide) before continuing on.
+Use as a plugin, to extend your own generator with this generator:
 
-**Usage**
+```js
+module.exports = function(app) {
+  app.use(require('generate-eslint'));
+};
+```
 
-* [CLI usage](#cli)
-* [API usage](#api)
+Register as a sub-generator, to add this generator to a namespace in your generator:
+
+```js
+module.exports = function(app) {
+  // you can use any arbitrary name to register the generator
+  app.register('eslint', require('generate-eslint'));
+};
+```
+
+See the [API docs](#api) for more detailed examples and descriptions.
 
 ***
 
@@ -58,6 +70,36 @@ If completed successfully, you should see both `starting` and `finished` events 
 If you do not see one or both of those events, please [let us know about it](../../issues).
 
 ### Tasks
+
+#### [eslint](generator.js#L21)
+
+Generate a `.eslintrc.json` file to the current working directory or specified `--dest` directory.
+
+**Example**
+
+```sh
+$ gen eslint
+```
+
+#### [eslint:ignore](generator.js#L42)
+
+Generate a `.eslintignore` file to the current working directory or specified `--dest` directory. This task is also aliased as `eslintignore`, in case you want to use this generator as a sub-generator or plugin and want to use the `ignore` task name for something else.
+
+**Example**
+
+```sh
+$ gen eslint:ignore
+```
+
+#### [eslint:default](generator.js#L61)
+
+Alias for the [eslint][] task.
+
+**Example**
+
+```sh
+$ gen eslint:default
+```
 
 ***
 
@@ -105,46 +147,6 @@ module.exports = function(app) {
 Tasks from `generate-eslint` will be available on the `foo` namespace from the API and the command line. Continuing with the previous code example, to run the `default` task on `generate-eslint`, you would run `gen foo:default` (or just `gen foo` if `foo` does not conflict with an existing task on your generator).
 
 To learn more about namespaces and sub-generators, and how they work, [visit the getting started guide](https://github.com/generate/getting-started-guide).
-
-***
-
-## Usage
-
-```js
-var eslint = require('generate-eslint');
-```
-
-## API
-
-### [eslint](index.js#L19)
-
-Generate a `.eslintrc.json` file to the current working directory or specified `--dest` directory.
-
-**Example**
-
-```sh
-$ gen eslint
-```
-
-### [ignore](index.js#L40)
-
-Generate a `.eslintignore` file to the current working directory or specified `--dest` directory. This task is also aliased as `eslintignore`, in case you want to use this generator as a sub-generator or plugin and want to use the `ignore` task name for something else.
-
-**Example**
-
-```sh
-$ gen eslint:ignore
-```
-
-### [eslint:default](index.js#L59)
-
-Alias for the [eslint][] task.
-
-**Example**
-
-```sh
-$ gen eslint:default
-```
 
 ## Contributing
 

@@ -1,6 +1,6 @@
 {
   "name": "generate-eslint",
-  "description": "Generate an eslint config file. Can be used as a sub-generator or plugin with other generators.",
+  "description": "Generate a `.eslintrc.json` or `.eslintignore` file as part of a larger build workflow. This generator can be used as a sub-generator or plugin inside other generators.",
   "version": "0.1.0",
   "homepage": "https://github.com/generate/generate-eslint",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
@@ -10,7 +10,8 @@
   },
   "license": "MIT",
   "files": [
-    "index.js"
+    "index.js",
+    "templates"
   ],
   "main": "index.js",
   "engines": {
@@ -19,11 +20,31 @@
   "scripts": {
     "test": "mocha"
   },
+  "dependencies": {
+    "is-valid-app": "^0.1.0"
+  },
   "devDependencies": {
+    "delete": "^0.3.2",
+    "generate": "^0.7.0",
     "gulp-format-md": "^0.1.9",
     "mocha": "^2.5.3"
   },
-  "keywords": [],
+  "keywords": [
+    "config",
+    "create",
+    "eslint",
+    "eslintignore",
+    "file",
+    "fs",
+    "generate",
+    "generator",
+    "init",
+    "rc",
+    "runtime",
+    "scaffold",
+    "write",
+    "yeoman"
+  ],
   "verb": {
     "toc": false,
     "layout": "generator",
@@ -34,8 +55,8 @@
       "gulp-format-md"
     ],
     "reflinks": [
-      "verb",
-      "generate"
+      "generate",
+      "verb"
     ],
     "lint": {
       "reflinks": true

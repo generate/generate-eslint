@@ -26,10 +26,9 @@ function exists(name, cb) {
 
 describe('generate-eslint', function() {
   beforeEach(function() {
-    app = generate({cli: true, silent: true});
+    app = generate({silent: true});
     app.cwd = cwd();
     app.option('dest', cwd());
-    app.data('author.name', 'Jon Schlinkert');
   });
 
   describe('plugin', function() {
@@ -48,7 +47,7 @@ describe('generate-eslint', function() {
     });
   });
 
-  describe('generator', function() {
+  describe('plugin', function() {
     it('should work as a plugin', function() {
       app.use(generator);
       assert(app.tasks.hasOwnProperty('default'));
@@ -56,6 +55,23 @@ describe('generate-eslint', function() {
       assert(app.tasks.hasOwnProperty('ignore'));
     });
 
+    it('should run the `default` task', function(cb) {
+      app.use(generator);
+      app.generate('default', exists('.eslintrc.json', cb));
+    });
+
+    it('should run the `ignore` task', function(cb) {
+      app.use(generator);
+      app.generate('ignore', exists('.eslintignore', cb));
+    });
+
+    it('should run the `eslintignore` (alias) task', function(cb) {
+      app.use(generator);
+      app.generate('eslintignore', exists('.eslintignore', cb));
+    });
+  });
+
+  describe('generator', function() {
     it('should work as a generator', function(cb) {
       app.register('eslint', generator);
       app.generate('eslint', exists('.eslintrc.json', cb));
@@ -66,9 +82,44 @@ describe('generate-eslint', function() {
       app.generate('eslint:default', exists('.eslintrc.json', cb));
     });
 
-    it('should run the `first-commit` task', function(cb) {
+    it('should run the `ignore` task', function(cb) {
       app.register('eslint', generator);
-      app.generate('eslint:first-commit', exists('.eslintrc.json', cb));
+      app.generate('eslint:ignore', exists('.eslintignore', cb));
+    });
+
+    it('should run the `eslintignore` (alias) task', function(cb) {
+      app.register('eslint', generator);
+      app.generate('eslint:eslintignore', exists('.eslintignore', cb));
+    });
+  });
+
+  describe('sub-generator', function() {
+    it('should work as a sub-generator', function(cb) {
+      app.register('foo', function(foo) {
+        foo.register('eslint', generator);
+      });
+      app.generate('foo.eslint', exists('.eslintrc.json', cb));
+    });
+
+    it('should run the `default` task', function(cb) {
+      app.register('foo', function(foo) {
+        foo.register('eslint', generator);
+      });
+      app.generate('foo.eslint:default', exists('.eslintrc.json', cb));
+    });
+
+    it('should run the `ignore` task', function(cb) {
+      app.register('foo', function(foo) {
+        foo.register('eslint', generator);
+      });
+      app.generate('foo.eslint:ignore', exists('.eslintignore', cb));
+    });
+
+    it('should run the `eslintignore` (alias) task', function(cb) {
+      app.register('foo', function(foo) {
+        foo.register('eslint', generator);
+      });
+      app.generate('foo.eslint:eslintignore', exists('.eslintignore', cb));
     });
   });
 });
