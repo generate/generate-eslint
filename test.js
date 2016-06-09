@@ -45,10 +45,8 @@ describe('generate-eslint', function() {
       assert.equal(count, 1);
       cb();
     });
-  });
 
-  describe('plugin', function() {
-    it('should work as a plugin', function() {
+    it('should extend tasks onto the instance', function() {
       app.use(generator);
       assert(app.tasks.hasOwnProperty('default'));
       assert(app.tasks.hasOwnProperty('eslint'));

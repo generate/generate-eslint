@@ -49,7 +49,7 @@ module.exports = function(app) {
   });
 
   /**
-   * Alias for the [eslint][] task.
+   * Alias for the [eslint](#eslint) task.
    *
    * ```sh
    * $ gen eslint:default

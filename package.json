@@ -10,6 +10,7 @@
   },
   "license": "MIT",
   "files": [
+    "generator.js",
     "index.js",
     "templates"
   ],
@@ -63,9 +64,9 @@
       ]
     },
     "reflinks": [
+      "eslint",
       "generate",
       "verb",
-      "eslint",
       "verb-readme-generator"
     ],
     "lint": {
