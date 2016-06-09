@@ -54,9 +54,19 @@
     "plugins": [
       "gulp-format-md"
     ],
+    "related": {
+      "list": [
+        "generate",
+        "generate-file",
+        "generate-mocha",
+        "generate-node"
+      ]
+    },
     "reflinks": [
       "generate",
-      "verb"
+      "verb",
+      "eslint",
+      "verb-readme-generator"
     ],
     "lint": {
       "reflinks": true
