@@ -1,7 +1,7 @@
 {
   "name": "generate-eslint",
   "description": "Generate a `.eslintrc.json` or `.eslintignore` file as part of a larger build workflow. This generator can be used as a sub-generator or plugin inside other generators.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/generate/generate-eslint",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "generate/generate-eslint",
