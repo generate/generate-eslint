@@ -7,6 +7,7 @@
 /jsdoc/**
 /templates/**
 /tests/actual/**
+/tests/templates/**
 /tests/bench/**
 /tests/fixtures/**
 /tests/performance/**
