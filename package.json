@@ -1,7 +1,7 @@
 {
   "name": "generate-eslint",
   "description": "Generate a new `.eslintrc.json` or `.eslintignore` file from a pre-defined or user-defined template. Can be used from the command line when installed globally, or as a plugin in your own generator.",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "homepage": "https://github.com/generate/generate-eslint",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "generate/generate-eslint",
