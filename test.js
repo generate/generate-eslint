@@ -49,7 +49,7 @@ describe('generate-eslint', function() {
     it('should extend tasks onto the instance', function() {
       app.use(generator);
       assert(app.tasks.hasOwnProperty('default'));
-      assert(app.tasks.hasOwnProperty('eslint'));
+      assert(app.tasks.hasOwnProperty('eslintrc'));
       assert(app.tasks.hasOwnProperty('ignore'));
     });
 
@@ -82,7 +82,7 @@ describe('generate-eslint', function() {
 
     it('should run the `eslint` task', function(cb) {
       app.register('eslint', generator);
-      app.generate('eslint:eslint', exists('.eslintrc.json', cb));
+      app.generate('eslint:eslintrc', exists('.eslintrc.json', cb));
     });
 
     it('should run the `ignore` task', function(cb) {

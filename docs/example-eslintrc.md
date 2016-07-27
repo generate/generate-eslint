@@ -4,7 +4,7 @@ Use as a plugin in your generator:
 
 ```js
 app.use(require('{%= name %}'));
-app.task('default', ['eslint']);
+app.task('default', ['eslintrc']);
 ```
 
 **Sub-generator usage**
@@ -16,10 +16,10 @@ Use as a sub-generator:
 app.register('foo', require('{%= name %}'));
 // adds tasks to:
 // - `foo:ignore`
-// - `foo:eslint`
+// - `foo:eslintrc`
 
 // use `.generate` to run sub-generator tasks
-app.generate('foo:eslint', function(err) {
+app.generate('foo:eslintrc', function(err) {
   if (err) console.log(err);
 });
 ```

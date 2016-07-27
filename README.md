@@ -5,7 +5,7 @@
 </a>
 </p>
 
-Generate a new `.eslintrc.json` or `.eslintignore` file from a pre-defined or user-defined template. This generator can be used from the command line when installed globally, or as a plugin or sub-generator in other generators.
+Generate a new `.eslintrc.json` or `.eslintignore` file from a pre-defined or user-defined template. Can be used from the command line when installed globally, or as a plugin in your own generator.
 
 # generate-eslint
 
@@ -16,13 +16,12 @@ Generate a new `.eslintrc.json` or `.eslintignore` file from a pre-defined or us
 ## Table of Contents
 
 - [What is "Generate"?](#what-is-generate)
-- [What does generate-eslint do?](#what-does-generate-eslint-do)
 - [Getting started](#getting-started)
   * [Install](#install)
   * [Usage](#usage)
   * [Tasks](#tasks)
     + [default](#default)
-    + [eslint](#eslint)
+    + [eslintrc](#eslintrc)
     + [ignore](#ignore)
 - [About](#about)
   * [Related projects](#related-projects)
@@ -45,13 +44,6 @@ Answers to prompts and the user's environment can be used to determine the templ
 * Visit the [generate project](https://github.com/generate/generate/)
 * Visit the [generate documentation](https://github.com/generate/generate/blob/master/docs/)
 * Find [generators on npm](https://www.npmjs.com/browse/keyword/generate-generator) (help us [author generators](https://github.com/generate/generate/blob/master/docs/micro-generators.md))
-
-## What does generate-eslint do?
-
-This generator's `default` task adds or replaces the `.eslintrc.json` file in the current working directory with a template from one of the following locations:
-
-* defined by you, stored at `~/templates/.eslintrc.json` (user home on your system), or if not defined
-* the generic template in this project's [templates](templates) directory.
 
 ## Getting started
 
@@ -83,13 +75,20 @@ Run this generator's `default` [task](https://github.com/generate/generate/blob/
 $ gen eslint
 ```
 
+**What will happen?**
+
+Running the `default` task will add or replace the `.eslintrc.json` file in the current working directory with a template from one of the following locations, in order of precedence:
+
+* defined by you, stored at `~/templates/_eslintrc.json` (user home on your system), or if not defined
+* the generic template in this project's [templates](templates) directory.
+
 ### Tasks
 
 All available tasks.
 
-#### [default](generator.js#L20)
+#### [default](generator.js#L21)
 
-Generate a `.eslintrc.json` file to the current working directory.
+Generate a `.eslintrc.json` file to the current working directory. Described in more detail in the [usage](#usage) section.
 
 **Example**
 
@@ -97,14 +96,14 @@ Generate a `.eslintrc.json` file to the current working directory.
 $ gen eslint
 ```
 
-#### [eslint](generator.js#L39)
+#### [eslintrc](generator.js#L40)
 
 Alias for the [default](#default) task, to provide a semantic task name for when this generator is used as a plugin or sub-generator.
 
 **Example**
 
 ```sh
-$ gen eslint:eslint
+$ gen eslint:eslintrc
 ```
 
 **Plugin usage**
@@ -113,7 +112,7 @@ Use as a plugin in your generator:
 
 ```js
 app.use(require('generate-eslint'));
-app.task('default', ['eslint']);
+app.task('default', ['eslintrc']);
 ```
 
 **Sub-generator usage**
@@ -125,15 +124,15 @@ Use as a sub-generator:
 app.register('foo', require('generate-eslint'));
 // adds tasks to:
 // - `foo:ignore`
-// - `foo:eslint`
+// - `foo:eslintrc`
 
 // use `.generate` to run sub-generator tasks
-app.generate('foo:eslint', function(err) {
+app.generate('foo:eslintrc', function(err) {
   if (err) console.log(err);
 });
 ```
 
-#### [ignore](generator.js#L53)
+#### [ignore](generator.js#L54)
 
 Generate a `.eslintignore` file to the current working directory. This task is also aliased as `eslintignore` to provide a more semantic task name for when this generator is used as a plugin or sub-generator.
 
@@ -143,7 +142,7 @@ Generate a `.eslintignore` file to the current working directory. This task is a
 $ gen eslint:ignore
 ```
 
-Visit the [documentation for tasks](https://github.com/generate/generate/blob/master/docs/tasks.md).
+Visit Generate's [documentation for tasks](https://github.com/generate/generate/blob/master/docs/tasks.md).
 
 **Plugin usage**
 

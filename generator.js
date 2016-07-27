@@ -8,7 +8,8 @@ module.exports = function(app) {
   if (!isValid(app, 'generate-eslint')) return;
 
   /**
-   * Generate a `.eslintrc.json` file to the current working directory.
+   * Generate a `.eslintrc.json` file to the current working directory. Described in more
+   * detail in the [usage](#usage) section.
    *
    * ```sh
    * $ gen eslint
@@ -30,13 +31,13 @@ module.exports = function(app) {
    * when this generator is used as a plugin or sub-generator.
    *
    * ```sh
-   * $ gen eslint:eslint
+   * $ gen eslint:eslintrc
    * ```
-   * @name eslint
+   * @name eslintrc
    * @api public
    */
 
-  app.task('eslint', {silent: true}, ['default']);
+  app.task('eslintrc', {silent: true}, ['default']);
 
   /**
    * Generate a `.eslintignore` file to the current working directory. This task
