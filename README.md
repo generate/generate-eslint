@@ -77,7 +77,7 @@ $ npm install --global generate-eslint
 
 ### Usage
 
-Run this generator's `default` [task](https://github.com/generate/generate/blob/master/docs/docs/tasks.md#default-task) with the following command:
+Run this generator's `default` [task](https://github.com/generate/generate/blob/master/docs/tasks.md#default) with the following command:
 
 ```sh
 $ gen eslint
