@@ -19,10 +19,11 @@ Generate a new `.eslintrc.json` or `.eslintignore` file from a pre-defined or us
 - [Getting started](#getting-started)
   * [Install](#install)
   * [Usage](#usage)
-  * [Tasks](#tasks)
-    + [default](#default)
-    + [eslintrc](#eslintrc)
-    + [ignore](#ignore)
+  * [Help](#help)
+- [Tasks](#tasks)
+  * [default](#default)
+  * [eslintrc](#eslintrc)
+  * [ignore](#ignore)
 - [History](#history)
 - [About](#about)
   * [Related projects](#related-projects)
@@ -83,11 +84,31 @@ Running the `default` task will add or replace the `.eslintrc.json` file in the 
 * defined by you, stored at `~/templates/_eslintrc.json` (user home on your system), or if not defined
 * the generic template in this project's [templates](templates) directory.
 
-### Tasks
+**What you should see in the terminal**
+
+If completed successfully, you should see both `starting` and `finished` events in the terminal, like the following:
+
+```sh
+[00:44:21] starting ...
+...
+[00:44:22] finished ✔
+```
+
+If you do not see one or both of those events, please [let us know about it](../../issues).
+
+### Help
+
+To see a general help menu and available commands for Generate's CLI, run:
+
+```sh
+$ gen help
+```
+
+## Tasks
 
 All available tasks.
 
-#### [default](generator.js#L21)
+### [default](generator.js#L21)
 
 Generate a `.eslintrc.json` file to the current working directory. Described in more detail in the [usage](#usage) section.
 
@@ -97,7 +118,7 @@ Generate a `.eslintrc.json` file to the current working directory. Described in 
 $ gen eslint
 ```
 
-#### [eslintrc](generator.js#L40)
+### [eslintrc](generator.js#L34)
 
 Alias for the [default](#default) task, to provide a semantic task name for when this generator is used as a plugin or sub-generator.
 
@@ -133,7 +154,7 @@ app.generate('foo:eslintrc', function(err) {
 });
 ```
 
-#### [ignore](generator.js#L54)
+### [ignore](generator.js#L54)
 
 Generate a `.eslintignore` file to the current working directory. This task is also aliased as `eslintignore` to provide a more semantic task name for when this generator is used as a plugin or sub-generator.
 
