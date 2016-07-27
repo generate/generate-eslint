@@ -18,13 +18,7 @@ module.exports = function(app) {
    * @api public
    */
 
-  app.task('default', {silent: true}, function() {
-    return app.src('_eslintrc.json', {cwd: templates})
-      .pipe(app.dest(function(file) {
-        file.basename = '.eslintrc.json';
-        return app.cwd;
-      }));
-  });
+  app.task('default', {silent: true}, ['eslintrc']);
 
   /**
    * Alias for the [default](#default) task, to provide a semantic task name for
@@ -37,7 +31,13 @@ module.exports = function(app) {
    * @api public
    */
 
-  app.task('eslintrc', {silent: true}, ['default']);
+  app.task('eslintrc', {silent: true}, function() {
+    return app.src('_eslintrc.json', {cwd: templates})
+      .pipe(app.dest(function(file) {
+        file.basename = '.eslintrc.json';
+        return app.cwd;
+      }));
+  });
 
   /**
    * Generate a `.eslintignore` file to the current working directory. This task
