@@ -13,11 +13,11 @@ module.exports = function(app) {
    * ```sh
    * $ gen eslint
    * ```
-   * @name eslint
+   * @name default
    * @api public
    */
 
-  app.task('eslint', {silent: true}, function() {
+  app.task('default', {silent: true}, function() {
     return app.src('_eslintrc.json', {cwd: templates})
       .pipe(app.dest(function(file) {
         file.basename = '.eslintrc.json';
@@ -26,12 +26,27 @@ module.exports = function(app) {
   });
 
   /**
-   * Generate a `.eslintignore` file to the current working directory. This task is also aliased as `eslintignore`, in case you want to use this generator as a sub-generator or plugin and want to use the `ignore` task name for something else.
+   * Alias for the [default](#default) task, to provide a semantic task name for
+   * when this generator is used as a plugin or sub-generator.
+   *
+   * ```sh
+   * $ gen eslint:eslint
+   * ```
+   * @name eslint
+   * @api public
+   */
+
+  app.task('eslint', {silent: true}, ['default']);
+
+  /**
+   * Generate a `.eslintignore` file to the current working directory. This task
+   * is also aliased as `eslintignore` to provide a more semantic task name for
+   * when this generator is used as a plugin or sub-generator.
    *
    * ```sh
    * $ gen eslint:ignore
    * ```
-   * @name eslint:ignore
+   * @name ignore
    * @api public
    */
 
@@ -43,16 +58,4 @@ module.exports = function(app) {
         return app.cwd;
       }));
   });
-
-  /**
-   * Alias for the [eslint](#eslint) task.
-   *
-   * ```sh
-   * $ gen eslint:default
-   * ```
-   * @name eslint:default
-   * @api public
-   */
-
-  app.task('default', {silent: true}, ['eslint']);
 };

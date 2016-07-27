@@ -80,6 +80,11 @@ describe('generate-eslint', function() {
       app.generate('eslint:default', exists('.eslintrc.json', cb));
     });
 
+    it('should run the `eslint` task', function(cb) {
+      app.register('eslint', generator);
+      app.generate('eslint:eslint', exists('.eslintrc.json', cb));
+    });
+
     it('should run the `ignore` task', function(cb) {
       app.register('eslint', generator);
       app.generate('eslint:ignore', exists('.eslintignore', cb));

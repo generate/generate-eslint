@@ -78,6 +78,10 @@
       "method": "preWrite"
     },
     "layout": "generator",
+    "sections": {
+      "file": "readme",
+      "taskExamples": ["eslint", "ignore"]
+    },
     "tasks": [
       "readme"
     ],

@@ -21,6 +21,9 @@ Generate a new `.eslintrc.json` or `.eslintignore` file from a pre-defined or us
   * [Install](#install)
   * [Usage](#usage)
   * [Tasks](#tasks)
+    + [default](#default)
+    + [eslint](#eslint)
+    + [ignore](#ignore)
 - [About](#about)
   * [Related projects](#related-projects)
   * [Community](#community)
@@ -82,7 +85,91 @@ $ gen eslint
 
 ### Tasks
 
+All available tasks.
+
+#### [default](generator.js#L20)
+
+Generate a `.eslintrc.json` file to the current working directory.
+
+**Example**
+
+```sh
+$ gen eslint
+```
+
+#### [eslint](generator.js#L39)
+
+Alias for the [default](#default) task, to provide a semantic task name for when this generator is used as a plugin or sub-generator.
+
+**Example**
+
+```sh
+$ gen eslint:eslint
+```
+
+**Plugin usage**
+
+Use as a plugin in your generator:
+
+```js
+app.use(require('generate-eslint'));
+app.task('default', ['eslint']);
+```
+
+**Sub-generator usage**
+
+Use as a sub-generator:
+
+```js
+// use whatever name you want
+app.register('foo', require('generate-eslint'));
+// adds tasks to:
+// - `foo:ignore`
+// - `foo:eslint`
+
+// use `.generate` to run sub-generator tasks
+app.generate('foo:eslint', function(err) {
+  if (err) console.log(err);
+});
+```
+
+#### [ignore](generator.js#L53)
+
+Generate a `.eslintignore` file to the current working directory. This task is also aliased as `eslintignore` to provide a more semantic task name for when this generator is used as a plugin or sub-generator.
+
+**Example**
+
+```sh
+$ gen eslint:ignore
+```
+
 Visit the [documentation for tasks](https://github.com/generate/generate/blob/master/docs/tasks.md).
+
+**Plugin usage**
+
+Use as a plugin in your generator:
+
+```js
+app.use(require('generate-eslint'));
+app.task('default', ['eslint-ignore']);
+```
+
+**Sub-generator usage**
+
+Use as a sub-generator:
+
+```js
+// use whatever name you want
+app.register('foo', require('generate-eslint'));
+// adds tasks to:
+// - `foo:ignore`
+// - `foo:eslint`
+
+// use `.generate` to run sub-generator tasks
+app.generate('foo:ignore', function(err) {
+  if (err) console.log(err);
+});
+```
 
 ## About
 
