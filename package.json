@@ -50,6 +50,8 @@
     "frontend",
     "fs",
     "generate",
+    "generate-generator",
+    "generate-plugin",
     "generategenerator",
     "generateplugin",
     "generator",
@@ -72,7 +74,9 @@
     "yo"
   ],
   "verb": {
-    "toc": false,
+    "toc": {
+      "method": "preWrite"
+    },
     "layout": "generator",
     "tasks": [
       "readme"
@@ -91,9 +95,12 @@
     "reflinks": [
       "eslint",
       "generate",
+      "generate-dest",
       "verb",
       "verb-readme-generator",
-      "generate-dest"
+      "assemble",
+      "base",
+      "gulp"
     ],
     "lint": {
       "reflinks": true
