@@ -23,6 +23,7 @@ Generate a new `.eslintrc.json` or `.eslintignore` file from a pre-defined or us
     + [default](#default)
     + [eslintrc](#eslintrc)
     + [ignore](#ignore)
+- [History](#history)
 - [About](#about)
   * [Related projects](#related-projects)
   * [Community](#community)
@@ -169,6 +170,12 @@ app.generate('foo:ignore', function(err) {
   if (err) console.log(err);
 });
 ```
+
+## History
+
+**0.2.0 - 2016-07-27**
+
+* Renamed the `eslint` task to `eslintrc`. This will mostly likely only be used by API, so make sure you update any references to `eslint:eslint` to be `eslint:eslintrc`
 
 ## About
 
