@@ -73,7 +73,8 @@
   ],
   "verb": {
     "toc": {
-      "method": "preWrite"
+      "method": "preWrite",
+      "collapsible": true
     },
     "layout": "generator",
     "sections": {
@@ -81,6 +82,24 @@
       "taskExamples": [
         "eslintrc",
         "ignore"
+      ],
+      "placements": [
+        {
+          "heading": "eslintrc",
+          "contents": "{%= doc(\"example-eslintrc.md\") %}",
+          "placement": "append",
+          "options": {
+            "match": "^\\[eslintrc\\]"
+          }
+        },
+        {
+          "heading": "ignore",
+          "contents": "{%= doc(\"example-ignore.md\") %}",
+          "placement": "append",
+          "options": {
+            "match": "^\\[ignore\\]"
+          }
+        }
       ]
     },
     "tasks": [
@@ -100,12 +119,7 @@
     "reflinks": [
       "assemble",
       "base",
-      "eslint",
-      "generate",
-      "generate-dest",
-      "gulp",
-      "verb",
-      "verb-readme-generator"
+      "gulp"
     ],
     "lint": {
       "reflinks": true
