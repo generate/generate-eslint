@@ -12,8 +12,6 @@
   "files": [
     "generator.js",
     "index.js",
-    "LICENSE",
-    "README.md",
     "templates"
   ],
   "main": "index.js",
@@ -24,13 +22,13 @@
     "test": "mocha"
   },
   "dependencies": {
-    "is-valid-app": "^0.2.0"
+    "is-valid-app": "^0.3.0"
   },
   "devDependencies": {
-    "delete": "^0.3.2",
-    "generate": "^0.9.8",
-    "gulp-format-md": "^0.1.9",
-    "mocha": "^2.5.3"
+    "delete": "^1.0.1",
+    "generate": "^0.14.0",
+    "gulp-format-md": "^0.1.12",
+    "mocha": "^3.4.2"
   },
   "keywords": [
     "boilerplate",
@@ -80,7 +78,10 @@
     "layout": "generator",
     "sections": {
       "file": "readme",
-      "taskExamples": ["eslintrc", "ignore"]
+      "taskExamples": [
+        "eslintrc",
+        "ignore"
+      ]
     },
     "tasks": [
       "readme"
@@ -97,14 +98,14 @@
       ]
     },
     "reflinks": [
+      "assemble",
+      "base",
       "eslint",
       "generate",
       "generate-dest",
+      "gulp",
       "verb",
-      "verb-readme-generator",
-      "assemble",
-      "base",
-      "gulp"
+      "verb-readme-generator"
     ],
     "lint": {
       "reflinks": true
